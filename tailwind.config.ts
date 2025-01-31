@@ -11,7 +11,9 @@ export default {
       'yellow': '#eab308',
       'light-gray': '#eeeeee',
       'gray-100': '#f3f4f6',
+      'green-500': '#25d366',
       'green-600': '#16a34a',
+      'red-500': '#FF0000'
     },
     extend: {},
   },

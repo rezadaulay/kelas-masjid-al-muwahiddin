@@ -9,8 +9,11 @@ import {
 import type { LinksFunction } from "@remix-run/node"; // or cloudflare/deno
 
 import styles from "./output.css?url";
+import "animate.css/animate.compat.css"
+// import animate from "./animate.min.css?url";
 
 export const links: LinksFunction = () => [
+  // { rel: "stylesheet", href: animate },
   { rel: "stylesheet", href: styles },
 ];
 
@@ -25,9 +28,9 @@ export default function App() {
       </head>
       <body className="bg-gray-100">
         <Outlet />
-        <footer className="bg-primary text-white py-6 text-center mt-10">
-          <p>Masjid Al Muwahhidin | 📍 [Alamat Masjid] | 📞 [Nomor Kontak] | 📩 [Email Kontak]</p>
-          <p className="mt-2">© 2025 Masjid Al Muwahhidin. Hak Cipta Dilindungi.</p>
+        <footer className="bg-primary text-white py-6 text-center">
+          {/* <p>BKM Masjid Al Muwahhidin | Jl. SMTK, Lingkungan VIII Kelurahan P.B. Selayang </p> */}
+          <p className="mt-0">© { (new Date()).getFullYear() } Masjid Al Muwahhidin. Hak Cipta Dilindungi.</p>
         </footer>
         <ScrollRestoration />
         <Scripts />

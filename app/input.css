@@ -12,3 +12,40 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+@media (max-width: 768px) {
+    .process-registration-line {
+        display: none;
+    }
+}
+.process-registration-line {
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    border: 1px dashed #000;
+}
+.process-registration-row .process-registration-col:nth-child(2):before,
+.process-registration-row .process-registration-col:nth-child(4):after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    top: 0px;
+    background: #f3f4f6;
+    z-index: 1;
+}
+.process-registration-row .process-registration-col:nth-child(2):before {
+    left: 0px;
+}
+.process-registration-row .process-registration-col:nth-child(4):after {
+    right: 0px;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.fade-in.visible {
+    opacity: 1;
+}
