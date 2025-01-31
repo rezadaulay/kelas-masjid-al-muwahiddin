@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (max-width: 768px) {
+    .step-container { flex-direction: column; }
+    .step-connector { width: 2px; height: 50px; left: 50%; top: 0; transform: translateX(-50%); }
+}
+.bg-image-header {
+    background-image: url('/images/semangat-membaca-al-quran-4.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
