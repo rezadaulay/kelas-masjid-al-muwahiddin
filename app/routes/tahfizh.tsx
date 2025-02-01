@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import FadeInElement from '../components/fadeInElement';
+import { Link } from "@remix-run/react";
 // import ScrollAnimation from 'react-animate-on-scroll';
 
 export const meta: MetaFunction = () => {
@@ -22,7 +23,7 @@ export default function TahfizhPage() {
         </FadeInElement>
       </div>
       <div className="bg-primary absolute w-full h-full top-0 left-0 z-0"></div>
-      <div className="bg-image-header absolute w-full h-full top-0 left-0 z-10 opacity-40"></div>
+      <div className="bg-image-header tahfizh absolute w-full h-full top-0 left-0 z-10 opacity-40"></div>
     </header>
     
     <section className="bg-white py-6">
@@ -177,12 +178,12 @@ export default function TahfizhPage() {
               <div className="z-10 relative">
                 <div className="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center mx-auto">3</div>
                 <p className="mt-2 text-gray-600 font-semibold">Mulai Belajar</p>
-                <p className="mt-0 text-gray-600">1 Apr 2025</p>
+                <p className="mt-0 text-gray-600">14 Apr 2025</p>
               </div>
             </div>
           </div>
           <div className="mt-10 text-center">
-              <a href="/registrasi?program=tahfizh" className="bg-primary hover:bg-green-600 text-white px-6 py-3 rounded-lg text-xl font-bold"><i className="fa-solid fa-hand-point-right"></i> Daftar Sekarang</a>
+              <Link to="/registrasi?program=tahfizh" className="bg-primary hover:bg-green-600 text-white px-6 py-3 rounded-lg text-xl font-bold"><i className="fa-solid fa-hand-point-right"></i> Daftar Sekarang</Link>
           </div>
       </div>
 

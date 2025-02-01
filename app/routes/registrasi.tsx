@@ -122,11 +122,11 @@ const RegistrationForm = () => {
         <div>
           { !isSubmitting ? (
             <button type="submit" className="w-full py-2 bg-primary text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                Registrasi
+                <i className="fa-solid fa-paper-plane"></i> Registrasi
             </button>
           ) : (
             <button type="submit" disabled className="w-full opacity-70 py-2 bg-primary text-white rounded-lg">
-            Registrasi
+                <i className="fa-solid fa-paper-plane"></i> Proses ...
             </button>
           )}
         </div>
