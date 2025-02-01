@@ -1,5 +1,8 @@
 {
-  "name": "kelas-tahfizh-muwahiddin",
+  "name": "kelas-masjid-al-muwahiddin",
+  "productName": "Kelas Masjid Al-Muwahiddin Medan",
+  "version": "1.0.0",
+  "description": "Listing kelas dan form registrasi kelas belajar di Masjid Al-Muwahiddin Medan",
   "private": true,
   "sideEffects": false,
   "type": "module",
@@ -48,5 +51,10 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "keywords": ["Remix", "React", "React Js"],
+  "author": {
+    "name": "BOPI CORPS",
+    "email": "daulayreza@gmail.com"
   }
 }
