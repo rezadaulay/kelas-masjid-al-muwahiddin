@@ -2,13 +2,21 @@
 import { supabaseClient } from '../supabase.connection'
 
 export async function getClassType(name: string) {
-    const { data, error } = await supabaseClient().from('classTypes')
-    .select().eq('name', name).maybeSingle()
-    // console.log('data', data)
-    // console.log('error', error)
-    if (error) {
-      throw error;
-    }
-  
-    return data
+  const { data, error } = await supabaseClient().from('classTypes')
+  .select().eq('name', name).maybeSingle()
+  if (error) {
+    throw error;
   }
+
+  return data
+}
+
+export async function getActiveClassType() {
+  const { data, error } = await supabaseClient().from('classTypes')
+  .select().eq('closed', false)
+  if (error) {
+    throw error;
+  }
+
+  return data
+}
