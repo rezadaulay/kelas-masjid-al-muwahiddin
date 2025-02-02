@@ -7,6 +7,14 @@ import { getClassType } from '../.server/api/classType';
 export const meta: MetaFunction = () => {
   return [
     { title: "Kelas Tahsin & Tahfizh - Masjid Al Muwahhidin" },
+    {
+      property: "description",
+      content: "Ikuti Kelas Tahsin & Tahfizh di Masjid Al Muwahhidin untuk meningkatkan kemampuan membaca dan menghafal Al-Qur'an dengan bimbingan ustadz bersanad. Program gratis dengan metode talaqqi dan murajaah, tersedia untuk anak-anak dan dewasa"
+    },
+    {
+      property: "og:image",
+      content: "https://kelas.masjidmuwahhidin.com/images/semangat-membaca-al-quran-4.jpeg",
+    },
     // { name: "description", content: "Welcome to Remix!" },
   ];
 };

@@ -6,7 +6,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import type { LinksFunction } from "@remix-run/node"; // or cloudflare/deno
+import type { LinksFunction, MetaFunction } from "@remix-run/node"; // or cloudflare/deno
 
 import styles from "./output.css?url";
 import "animate.css/animate.compat.css"
@@ -17,12 +17,38 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
 ];
 
+// export const meta: MetaFunction = () => {
+//   return [
+//     {
+//       property: "og:image",
+//       content: "https://kelas.masjidmuwahhidin.com/images/semangat-membaca-al-quran-4.jpeg",
+//     },
+//     {
+//       property: "og:locale",
+//       content: "id_ID",
+//     },
+//     {
+//       property: "og:type",
+//       content: "article",
+//     },
+//     {
+//       property: "article:publisher",
+//       content: "https://www.facebook.com/profile.php?id=100068007901432",
+//     },
+//     // { name: "description", content: "Welcome to Remix!" },
+//   ];
+// };
+
 export default function App() {
   return (
     <html lang="id">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* <meta property="og:image" content="https://kelas.masjidmuwahhidin.com/images/semangat-membaca-al-quran-4.jpeg"/> */}
+        <meta property="og:locale" content="id_ID"/>
+        <meta property="og:type" content="article"/>
+        <meta property="article:publisher" content="https://www.facebook.com/profile.php?id=100068007901432"/>
         <Meta />
         <Links />
       </head>
