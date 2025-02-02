@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSearchParams, Form, useSubmit, redirect, useNavigation } from "@remix-run/react";
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { MetaFunction } from "@remix-run/node";
-import { useLocation } from 'react-router-dom';
+import type { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
+import { addNewRegistrant } from "../.server/api/registrant";
 
 export const meta: MetaFunction = () => {
   return [
@@ -23,58 +24,80 @@ const registrationSchema = z.object({
 
 type RegistrationFormData = z.infer<typeof registrationSchema>;
 
+export async function action({
+  request
+}: ActionFunctionArgs) {
+  const body = await request.formData();
+  await addNewRegistrant({
+    name: body.get("name") as string,
+    phone: body.get("phone") as string,
+    kelas_type: body.get("kelas_type") as string,
+    kategori_type: body.get("kategori_type") as string,
+  });
+  return redirect(`/registrasi?success=1`);
+};
+
 const RegistrationForm = () => {
+  const navigation = useNavigation();
+  const submit = useSubmit();
+  const [searchParams] = useSearchParams();
+  const isSuccess = parseInt(searchParams.get("success") || '') === 1;
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  // const [successMessage, setSuccessMessage] = useState('');
 
   // Mengambil query parameter program dari URL
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
   const programFromUrl = (searchParams.get('program') || 'tahfizh') as 'tahfizh'; // Menetapkan tipe 'tahfizh'  
 
-  const { register, handleSubmit, formState: { errors } } = useForm<RegistrationFormData>({
+  const { register, handleSubmit, formState: { errors }, getValues } = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
       kelas: programFromUrl, // Menetapkan nilai default kelas berdasarkan parameter URL
     }
   });
 
-  const onSubmit = async (data: RegistrationFormData) => {
-    setIsSubmitting(true);
-    try {
-      // Simulasi pengiriman data ke server
-      const response = await fetch('/api/registrasi', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
+  const onSubmit = async () => {
+    // setIsSubmitting(true);
+    submit({
+      kelas_type: getValues('kelas'),
+      name: getValues('nama'),
+      phone: getValues('noWhatsapp'),
+      kategori_type: getValues('kategori'),
+    }, { method: "post" });
+    // try {
+    //   // Simulasi pengiriman data ke server
+    //   const response = await fetch('/api/registrasi', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(data)
+    //   });
 
-      if (response.ok) {
-        setSuccessMessage('Registrasi berhasil!');
-      } else {
-        setErrorMessage('Terjadi kesalahan, silakan coba lagi.');
-      }
-      setIsSubmitting(false);
-    } catch (error) {
-      setErrorMessage('Terjadi kesalahan, silakan coba lagi.');
-      setIsSubmitting(false);
-    }
+    //   if (response.ok) {
+    //     // setSuccessMessage('Registrasi berhasil!');
+    //   } else {
+    //     setErrorMessage('Terjadi kesalahan, silakan coba lagi.');
+    //   }
+    //   setIsSubmitting(false);
+    // } catch (error) {
+    //   setErrorMessage('Terjadi kesalahan, silakan coba lagi.');
+    //   setIsSubmitting(false);
+    // }
   };
 
   return (
     <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg my-7">
       <h2 className="text-2xl font-semibold text-primary mb-4">Form Registrasi</h2>
 
-      {successMessage && <div className='bg-green-600 p-2 text-sm rounded-lg text-white mb-4'>
+      {isSuccess && <div className='bg-green-600 p-2 text-sm rounded-lg text-white mb-4'>
         Registrasi Berhasil, untuk info selanjutnya harap menunggu anda akan dihubungi oleh admin kami.
       </div>}
       {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
 
-      {!successMessage && 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      {!isSuccess && 
+      <Form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Kelas */}
         <div>
           <label htmlFor="kelas" className="block text-gray-700">Kelas:</label>
@@ -120,17 +143,17 @@ const RegistrationForm = () => {
 
         {/* Submit Button */}
         <div>
-          { !isSubmitting ? (
-            <button type="submit" className="w-full py-2 bg-primary text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                <i className="fa-solid fa-paper-plane"></i> Registrasi
-            </button>
-          ) : (
+          { navigation.state === `submitting` || navigation.state === `loading` ? (
             <button type="submit" disabled className="w-full opacity-70 py-2 bg-primary text-white rounded-lg">
                 <i className="fa-solid fa-paper-plane"></i> Proses ...
             </button>
+          ) : (
+            <button type="submit" className="w-full py-2 bg-primary text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <i className="fa-solid fa-paper-plane"></i> Registrasi
+            </button>
           )}
         </div>
-      </form>}
+      </Form>}
     </div>
   );
 };

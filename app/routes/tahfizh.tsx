@@ -1,6 +1,7 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import FadeInElement from '../components/fadeInElement';
-import { Link } from "@remix-run/react";
+import { Link, json, useLoaderData } from "@remix-run/react";
+import { getClassType } from '../.server/api/classType';
 // import ScrollAnimation from 'react-animate-on-scroll';
 
 export const meta: MetaFunction = () => {
@@ -10,11 +11,23 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader: LoaderFunction = async () => {
+  const classType = await getClassType('tahfizh');
+  return json(
+      { classType },
+  );
+};
+
+
 export default function TahfizhPage() {
+  const data = useLoaderData<typeof loader>();
+
+  // console.log('data ok:', data)
+
   return (
     <>
     <header className="text-white py-10 text-center relative">
-      <div className="z-20 relative">
+      <div className="z-20 relative px-6 md:px-0">
         <FadeInElement>
           <img src="./images/logo-masjid.png" alt="Logo Masjid" className="mx-auto h-24 mb-4"/>
           <h1 className="text-3xl font-bold">Kelas Tahsin & Tahfizh Masjid Al Muwahhidin</h1>
@@ -77,7 +90,7 @@ export default function TahfizhPage() {
     
     <section className="bg-white py-6">
       <FadeInElement>
-      <div className="max-w-5xl mx-auto mt-10">
+      <div className="max-w-5xl mx-auto mt-10 px-6 md:px-0">
           <h2 className="text-2xl font-bold text-center text-gray-700">Para Pengajar</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
               <div className="p-6 bg-white shadow-lg rounded-lg text-center border border-light-gray">
@@ -183,7 +196,11 @@ export default function TahfizhPage() {
             </div>
           </div>
           <div className="mt-10 text-center">
+            { !data.classType?.closed ? (
               <Link to="/registrasi?program=tahfizh" className="bg-primary hover:bg-green-600 text-white px-6 py-3 rounded-lg text-xl font-bold"><i className="fa-solid fa-hand-point-right"></i> Daftar Sekarang</Link>
+            ) : (
+              <button disabled className="bg-primary opacity-50 text-white px-6 py-2 rounded-lg text-xl font-bold">Pendaftaran Ditutup</button>
+            )}
           </div>
       </div>
 

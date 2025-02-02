@@ -32,6 +32,24 @@ export interface Database {
           name: string
           phone: string
         }
+      },
+      classTypes: {
+        Row: {
+          created_at: string | null
+          id: number
+          name: string
+          closed: boolean
+        }
+        Insert: {
+          created_at?: string | null
+          name: string
+          closed?: boolean
+        }
+        Update: {
+          created_at?: string | null
+          name: string
+          closed?: boolean
+        }
       }
     }
     Views: {
