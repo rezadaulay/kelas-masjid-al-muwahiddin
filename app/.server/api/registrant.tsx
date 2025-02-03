@@ -1,6 +1,6 @@
 // import { createError } from 'h3'
 import { supabaseClient } from '../supabase.connection'
-import { sendWhatsappNotification } from '../services/whatsapp'
+import { sendMessage } from '../services/whatsapp-queue'
 
 type registrant = {
   name: string,
@@ -27,15 +27,18 @@ export async function addNewRegistrant({
     if (error) {
       throw error;
     }
-
-    sendWhatsappNotification({
-      phone: phone,
-      content: `Assalamualaikum *${name}*,` +
-      "\n\n" +
-      `Data anda telah masuk dan insya Allah akan kami hubungi untuk tes seleksi yang insya Allah yang akan dilaksanakan pada tanggal *25 Shaʻban 1446H/24 Februari 2025*` +
-      "\n\n" +
-      `Jika masih ada pertanyaan silahkan hubungi kami\n*Reza Daulay: 0812-1000-2964* atau *Yanda Basu: 0813-7519-9058*`
-    });
+    try {
+      await sendMessage({
+        phone: phone,
+        content: `Assalamualaikum *${name}*,` +
+        "\n\n" +
+        `Data anda telah masuk dan insya Allah akan kami hubungi untuk tes seleksi yang insya Allah yang akan dilaksanakan pada tanggal *25 Shaʻban 1446H/24 Februari 2025*` +
+        "\n\n" +
+        `Jika masih ada pertanyaan silahkan hubungi kami\n*Reza Daulay: 0812-1000-2964* atau *Yanda Basu: 0813-7519-9058*`
+      });
+    } catch (error) {
+      console.log(error);
+    }
   
     return data
   }

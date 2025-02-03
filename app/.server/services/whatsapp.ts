@@ -4,7 +4,7 @@ import { environment } from '../environment'
 type message = {
     phone: string,
     content: string
-  }
+}
 
 export function sendWhatsappNotification({
     phone,
