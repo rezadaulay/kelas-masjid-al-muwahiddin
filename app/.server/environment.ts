@@ -10,6 +10,7 @@ const environmentSchema = z.object({
   REDIS_HOST: z.string().min(1),
   REDIS_PORT: z.string().min(1),
   REDIS_PASS: z.string().min(1),
+  GA_ID: z.string().min(1),
 })
 
 const environment = () => environmentSchema.parse(process.env)

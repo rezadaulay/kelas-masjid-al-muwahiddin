@@ -1,6 +1,7 @@
 // import { createError } from 'h3'
 import { supabaseClient } from '../supabase.connection'
-import { sendMessage } from '../services/whatsapp-queue'
+// import { sendMessage } from '../services/whatsapp-queue'
+import { sendWhatsappNotification } from '../services/whatsapp'
 
 type registrant = {
   name: string,
@@ -28,7 +29,7 @@ export async function addNewRegistrant({
       throw error;
     }
     try {
-      await sendMessage({
+      sendWhatsappNotification({
         phone: phone,
         content: `Assalamualaikum *${name}*,` +
         "\n\n" +

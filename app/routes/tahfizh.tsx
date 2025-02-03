@@ -2,6 +2,8 @@ import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import FadeInElement from '../components/fadeInElement';
 import { Link, json, useLoaderData } from "@remix-run/react";
 import { getClassType } from '../.server/api/classType';
+import { useEffect } from "react";
+import { onPageView } from "../.client/services/google-analytics";
 // import ScrollAnimation from 'react-animate-on-scroll';
 
 export const meta: MetaFunction = () => {
@@ -31,6 +33,15 @@ export default function TahfizhPage() {
   const data = useLoaderData<typeof loader>();
 
   // console.log('data ok:', data)
+
+  useEffect(() => {
+    onPageView({
+      page: '/',
+      title: 'Homepage'
+    })
+    return () => {
+    }
+  }, []);
 
   return (
     <>

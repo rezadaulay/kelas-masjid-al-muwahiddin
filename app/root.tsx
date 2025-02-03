@@ -1,15 +1,19 @@
 import {
+  json,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+// import ReactGA from "react-ga4";
 
 import type { LinksFunction, MetaFunction } from "@remix-run/node"; // or cloudflare/deno
 
 import styles from "./output.css?url";
 import "animate.css/animate.compat.css"
+import { useEffect } from "react";
 // import animate from "./animate.min.css?url";
 
 export const links: LinksFunction = () => [
@@ -39,7 +43,23 @@ export const links: LinksFunction = () => [
 //   ];
 // };
 
+
+export async function loader() {
+  return json({
+    ENV: {
+      GA_ID: process.env.GA_ID,
+    },
+  });
+}
+
 export default function App() {
+  const data = useLoaderData<typeof loader>();
+  // useEffect(() => {
+  //   ReactGA.initialize("");
+  //   return () => {
+  //   }
+  // }, []);
+  
   return (
     <html lang="id">
       <head>
@@ -59,6 +79,13 @@ export default function App() {
           <p className="mt-0">© { (new Date()).getFullYear() } Masjid Al Muwahhidin. Hak Cipta Dilindungi.</p>
         </footer>
         <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(
+              data.ENV
+            )}`,
+          }}
+        />
         <Scripts />
         <script src="https://kit.fontawesome.com/2be881f0a9.js" crossOrigin="anonymous"></script>
       </body>

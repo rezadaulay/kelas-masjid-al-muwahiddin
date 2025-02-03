@@ -6,6 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { ActionFunctionArgs, LoaderFunction, MetaFunction } from "@remix-run/node";
 import { addNewRegistrant } from "../.server/api/registrant";
 import { getActiveClassType } from '../.server/api/classType';
+import { useEffect } from "react";
+import { onPageView } from "../.client/services/google-analytics";
 
 export const meta: MetaFunction = () => {
   return [
@@ -102,6 +104,15 @@ const RegistrationForm = () => {
     //   setIsSubmitting(false);
     // }
   };
+
+  useEffect(() => {
+    onPageView({
+      page: '/',
+      title: 'Homepage'
+    })
+    return () => {
+    }
+  }, []);
 
   return (
     <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg my-7">

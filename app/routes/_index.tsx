@@ -1,5 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import { useEffect } from "react";
+import { onPageView } from "../.client/services/google-analytics";
 
 export const meta: MetaFunction = () => {
   return [
@@ -9,6 +11,15 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  useEffect(() => {
+    onPageView({
+      page: '/',
+      title: 'Homepage'
+    })
+    return () => {
+    }
+  }, []);
+
   return (
     <>
     <header className="text-white py-10 text-center relative">
