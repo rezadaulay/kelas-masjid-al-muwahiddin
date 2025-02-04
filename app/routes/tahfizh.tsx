@@ -17,6 +17,10 @@ export const meta: MetaFunction = () => {
       property: "og:image",
       content: "https://kelas.masjidmuwahhidin.com/images/semangat-membaca-al-quran-4.jpeg",
     },
+    {
+      property: "og:description",
+      content: "Ikuti Kelas Tahsin & Tahfizh di Masjid Al Muwahhidin untuk meningkatkan kemampuan membaca dan menghafal Al-Qur'an dengan bimbingan ustadz bersanad"
+    },
     // { name: "description", content: "Welcome to Remix!" },
   ];
 };

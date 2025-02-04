@@ -8,11 +8,15 @@ export const meta: MetaFunction = () => {
     { title: "Kelas Masjid Al Muwahhidin" },
     {
       property: "description",
-      content: "Harapan kami masjid ini tidak hanya menjadi tempat sholat, tetapi juga pusat pengembangan peradaban umat"
+      content: "Harapan kami masjid ini tidak hanya menjadi tempat sholat, tetapi juga pusat pengembangan peradaban umat, salah satunya dengan menjadikan mesjid tempat pendidikan"
     },
     {
       property: "og:image",
       content: "https://kelas.masjidmuwahhidin.com/images/semangat-membaca-al-quran-6.jpeg",
+    },
+    {
+      property: "og:description",
+      content: "Harapan kami masjid ini tidak hanya menjadi tempat sholat, tetapi juga pusat pengembangan peradaban umat"
     },
     // { name: "description", content: "Welcome to Remix!" },
   ];
