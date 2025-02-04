@@ -6,6 +6,14 @@ import { onPageView } from "../.client/services/google-analytics";
 export const meta: MetaFunction = () => {
   return [
     { title: "Kelas Masjid Al Muwahhidin" },
+    {
+      property: "description",
+      content: "Harapan kami masjid ini tidak hanya menjadi tempat sholat, tetapi juga pusat pengembangan peradaban umat"
+    },
+    {
+      property: "og:image",
+      content: "https://kelas.masjidmuwahhidin.com/images/semangat-membaca-al-quran-6.jpeg",
+    },
     // { name: "description", content: "Welcome to Remix!" },
   ];
 };
@@ -27,7 +35,7 @@ export default function Index() {
         <img src="./images/logo-masjid.png" alt="Logo Masjid" className="mx-auto h-24 mb-4"/>
         <h1 className="text-3xl font-bold">Kelas Masjid Al Muwahhidin</h1>
         <div className="max-w-4xl mx-auto">
-          <p className="mt-2 text-xl px-2 md:px-0">Harapan kami masjid ini tidak hanya menjadi tempat sholat, tetapi juga pusat pengembangan peradaban islam, salah satunya dengan menjadikan mesjid tempat pendidikan.</p>
+          <p className="mt-2 text-xl px-2 md:px-0">Harapan kami masjid ini tidak hanya menjadi tempat sholat, tetapi juga pusat pengembangan peradaban umat, salah satunya dengan menjadikan mesjid tempat pendidikan.</p>
         </div>
         {/* <h2 className="text-xl font-semibold text-center text-gray-700">"Sebaik-baik kalian adalah yang belajar Al-Qur’an dan mengajarkannya." (HR. Bukhari)</h2> */}
       </div>
