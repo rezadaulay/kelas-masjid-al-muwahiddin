@@ -13,7 +13,8 @@ import type { LinksFunction, MetaFunction } from "@remix-run/node"; // or cloudf
 
 import styles from "./output.css?url";
 import "animate.css/animate.compat.css"
-import { useEffect } from "react";
+import { ProgressBar } from "./components/progressBar";
+// import { useEffect } from "react";
 // import animate from "./animate.min.css?url";
 
 export const links: LinksFunction = () => [
@@ -73,6 +74,7 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-gray-100">
+        <ProgressBar/>
         <Outlet />
         <footer className="bg-primary text-white py-6 text-center">
           {/* <p>BKM Masjid Al Muwahhidin | Jl. SMTK, Lingkungan VIII Kelurahan P.B. Selayang </p> */}

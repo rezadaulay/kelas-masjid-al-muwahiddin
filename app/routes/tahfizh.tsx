@@ -69,7 +69,7 @@ export default function TahfizhPage() {
           <ul className="mt-6 space-y-4 text-gray-600">
               <li className="flex items-center"><i className="fas fa-book-reader text-green-600 mr-3"></i> Talaqqi – Belajar langsung dengan guru untuk memperbaiki bacaan</li>
               <li className="flex items-center"><i className="fas fa-sync-alt text-green-600 mr-3"></i> Murajaah – Repetisi hafalan agar semakin kuat</li>
-              <li className="flex items-center"><i className="fas fa-clipboard-check text-green-600 mr-3"></i> Evaluasi Berkala – Setiap 2 bulan untuk menilai perkembangan</li>
+              <li className="flex items-center"><i className="fas fa-clipboard-check text-green-600 mr-3"></i> Evaluasi Berkala – Setiap 3 bulan untuk menilai perkembangan</li>
           </ul>
         </FadeInElement>
       </div>
@@ -93,7 +93,7 @@ export default function TahfizhPage() {
             </div>
             <div className="p-6 bg-white shadow-lg rounded-lg text-center">
                 <i className="fas fa-calendar-alt text-4xl text-green-600"></i>
-                <h3 className="font-semibold sm:text-lg md:text-sm mt-4">Program 1 Tahun</h3>
+                <h3 className="font-semibold sm:text-lg md:text-sm mt-4">Program Triwulan</h3>
             </div>
             <div className="p-6 bg-white shadow-lg rounded-lg text-center">
                 <i className="fas fa-users text-4xl text-green-600"></i>
@@ -115,7 +115,7 @@ export default function TahfizhPage() {
       <FadeInElement>
       <div className="max-w-5xl mx-auto mt-10 px-6 md:px-0">
           <h2 className="text-2xl font-bold text-center text-gray-700">Para Pengajar</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-6">
               <div className="p-6 bg-white shadow-lg rounded-lg text-center border border-light-gray">
                   <h3 className="font-semibold text-lg">Ustadz Muhamad Yusuf, Lc, MH</h3>
                   <p className="text-gray-600">Pemegang Sanad Hafs ‘An ‘Ashim ke-30 Jalur Asy-Syathibiyyah</p>
@@ -124,9 +124,9 @@ export default function TahfizhPage() {
                   <h3 className="font-semibold text-lg">Ustadz Ardiyan Safi'i, S.Pd</h3>
                   <p className="text-gray-600">Pemegang Sanad Hafs & Warsy ‘An ‘Ashim ke-29 Jalur Asy-Syathibiyyah</p>
               </div>
-              <div className="p-6 bg-white shadow-lg rounded-lg text-cente border border-light-gray">
+              {/* <div className="p-6 bg-white shadow-lg rounded-lg text-cente border border-light-gray">
                   <h3 className="font-semibold text-lg">Ustadz Muhammad Shahidan Abdi Lubis, S.Pd.I</h3>
-              </div>
+              </div> */}
               <div className="p-6 bg-white shadow-lg rounded-lg text-center border border-light-gray">
                   <h3 className="font-semibold text-lg">Akh Rifai Fando</h3>
               </div>
@@ -180,7 +180,7 @@ export default function TahfizhPage() {
                   <img src="/images/semangat-membaca-al-quran-7.jpeg" className="rounded-t-lg" alt="" />
                   <div className="p-6">
                   <h3 className="font-semibold text-lg">Kelas Dewasa (16+ tahun)</h3>
-                  <p className="text-gray-600">Ahad, Senin, Rabu, Kamis<br/>Ba’da Maghrib - 21.00 WIB</p>
+                  <p className="text-gray-600">Tahsin: Ahad, Senin | Tahfizh: Rabu, Kamis<br/>Ba’da Maghrib - 21.00 WIB</p>
                   </div>
               </div>
           </div>
