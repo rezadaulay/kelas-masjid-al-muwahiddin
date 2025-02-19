@@ -158,7 +158,7 @@ const RegistrationForm = () => {
           <label htmlFor="kategori" className="block text-gray-700">Kategori:</label>
           <select {...register('kategori')} id="kategori" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
             <option value="">Pilih salah satu</option>
-{/*             <option value="Anak-anak">Anak-anak</option> */}
+            <option value="Anak-anak">Anak-anak</option>
             <option value="Dewasa">Dewasa</option>
           </select>
           {errors.kategori && <p className="text-red-500 text-sm">{errors.kategori.message}</p>}
