@@ -107,8 +107,8 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     onPageView({
-      page: '/',
-      title: 'Homepage'
+      page: '/registrasi',
+      title: 'Registrasi'
     })
     return () => {
     }
@@ -158,7 +158,7 @@ const RegistrationForm = () => {
           <label htmlFor="kategori" className="block text-gray-700">Kategori:</label>
           <select {...register('kategori')} id="kategori" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
             <option value="">Pilih salah satu</option>
-            <option value="Anak-anak">Anak-anak</option>
+            {/* <option value="Anak-anak">Anak-anak</option> */}
             <option value="Dewasa">Dewasa</option>
           </select>
           {errors.kategori && <p className="text-red-500 text-sm">{errors.kategori.message}</p>}
@@ -168,7 +168,7 @@ const RegistrationForm = () => {
         <div>
           <label className="flex items-center text-gray-700">
             <input type="checkbox" {...register('centang')} className="mr-2" />
-            <span className="text-sm leading-tight	">Saya akan serius mengikuti program ini dan bersedia mengikuti segala peraturan.</span>
+            <span className="text-sm leading-tight	">Saya akan serius mengikuti program ini dan bersedia mengikuti segala peraturan yang berlaku.</span>
           </label>
           {errors.centang && <p className="text-red-500 text-sm">{errors.centang.message}</p>}
         </div>

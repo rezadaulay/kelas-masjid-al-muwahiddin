@@ -8,10 +8,10 @@ import { onPageView } from "../.client/services/google-analytics";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Kelas Tahsin & Tahfizh - Masjid Al Muwahhidin" },
+    { title: "Kelas Tahsin - Masjid Al Muwahhidin" },
     {
       property: "description",
-      content: "Ikuti Kelas Tahsin & Tahfizh di Masjid Al Muwahhidin untuk meningkatkan kemampuan membaca dan menghafal Al-Qur'an dengan bimbingan ustadz bersanad. Program gratis dengan metode talaqqi dan murajaah, tersedia untuk anak-anak dan dewasa"
+      content: "Ikuti Kelas Tahsin di Masjid Al Muwahhidin untuk meningkatkan kemampuan membaca dan menghafal Al-Qur'an dengan bimbingan ustadz bersanad. Program gratis dengan metode talaqqi dan murajaah, tersedia untuk dewasa"
     },
     {
       property: "og:image",
@@ -19,21 +19,22 @@ export const meta: MetaFunction = () => {
     },
     {
       property: "og:description",
-      content: "Ikuti Kelas Tahsin & Tahfizh di Masjid Al Muwahhidin untuk meningkatkan kemampuan membaca dan menghafal Al-Qur'an dengan bimbingan ustadz bersanad"
+      content: "Ikuti Kelas Tahsin di Masjid Al Muwahhidin untuk meningkatkan kemampuan membaca dan menghafal Al-Qur'an dengan bimbingan ustadz bersanad"
     },
     // { name: "description", content: "Welcome to Remix!" },
   ];
 };
 
 export const loader: LoaderFunction = async () => {
-  const classType = await getClassType('tahfizh');
+  
+  const classType = await getClassType('tahsin');
   return json(
       { classType },
   );
 };
 
 
-export default function TahfizhPage() {
+export default function TahsinPage() {
   const data = useLoaderData<typeof loader>();
 
   // console.log('data ok:', data)
@@ -53,7 +54,7 @@ export default function TahfizhPage() {
       <div className="z-20 relative px-6 md:px-0">
         <FadeInElement>
           <img src="./images/logo-masjid.png" alt="Logo Masjid" className="mx-auto h-24 mb-4"/>
-          <h1 className="text-3xl font-bold">Kelas Tahsin & Tahfizh Masjid Al Muwahhidin</h1>
+          <h1 className="text-3xl font-bold">Kelas Tahsin Masjid Al Muwahhidin</h1>
           <p className="mt-2">Raih Keberkahan dengan Al-Qur’an!</p>
           <h2 className="text-xl font-semibold text-center text-gray-700">"Sebaik-baik kalian adalah yang belajar Al-Qur’an dan mengajarkannya." (HR. Bukhari)</h2>
         </FadeInElement>
@@ -97,7 +98,7 @@ export default function TahfizhPage() {
             </div>
             <div className="p-6 bg-white shadow-lg rounded-lg text-center">
                 <i className="fas fa-users text-4xl text-green-600"></i>
-                <h3 className="font-semibold sm:text-lg md:text-sm mt-4">Tersedia Kelas Anak-Anak & Dewasa</h3>
+                <h3 className="font-semibold sm:text-lg md:text-sm mt-4">Kelas Dewasa</h3>
             </div>
             <div className="p-6 bg-white shadow-lg rounded-lg text-center">
                 <i className="fas fa-certificate text-4xl text-green-600"></i>
@@ -127,12 +128,12 @@ export default function TahfizhPage() {
               {/* <div className="p-6 bg-white shadow-lg rounded-lg text-cente border border-light-gray">
                   <h3 className="font-semibold text-lg">Ustadz Muhammad Shahidan Abdi Lubis, S.Pd.I</h3>
               </div> */}
-              <div className="p-6 bg-white shadow-lg rounded-lg text-center border border-light-gray">
+              {/* <div className="p-6 bg-white shadow-lg rounded-lg text-center border border-light-gray">
                   <h3 className="font-semibold text-lg">Akh Rifai Fando</h3>
               </div>
               <div className="p-6 bg-white shadow-lg rounded-lg text-center border border-light-gray">
                   <h3 className="font-semibold text-lg">Akh Aji Ramadhan</h3>
-              </div>
+              </div> */}
           </div>
       </div>
       </FadeInElement>
@@ -142,7 +143,8 @@ export default function TahfizhPage() {
       <div className="max-w-4xl mx-auto p-6">
           <h2 className="text-2xl font-bold text-center text-gray-700">Target</h2>
           <FadeInElement>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 ">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 "> */}
+          <div className="mt-6 ">
               <div className="bg-white shadow-lg rounded-lg text-center ">
                   <img src="/images/semangat-membaca-al-quran.jpeg" className="rounded-t-lg" alt="" />
                   <div className="p-6">
@@ -151,14 +153,14 @@ export default function TahfizhPage() {
                     <p className="text-gray-600">Mampu membaca Al-Qur’an dengan benar sesuai tajwid.</p>
                   </div>
               </div>
-              <div className="bg-white shadow-lg rounded-lg text-center ">
+              {/* <div className="bg-white shadow-lg rounded-lg text-center ">
                   <img src="/images/semangat-membaca-al-quran-5.jpeg" className="rounded-t-lg" alt="" />
                   <div className="p-6">
                     <h3 className="font-semibold text-lg">Kelas Tahfizh</h3>
                     <p className="text-sm">Hafal 3 Juz</p>
                     <p className="text-gray-600">Hafal Juz 30, 29, & 28 secara mutqin.</p>
                   </div>
-              </div>
+              </div> */}
           </div>
           </FadeInElement>
       </div>
@@ -168,19 +170,20 @@ export default function TahfizhPage() {
       <div className="max-w-4xl mx-auto p-6">
           <h2 className="text-2xl font-bold text-center text-gray-700">Pembagian Kelas & Jadwal</h2>
           <FadeInElement>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 ">
-              <div className="bg-white shadow-lg rounded-lg text-center ">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 "> */}
+          <div className="mt-6 ">
+              {/* <div className="bg-white shadow-lg rounded-lg text-center ">
                   <img src="/images/semangat-membaca-al-quran-6.jpeg" className="rounded-t-lg" alt="" />
                   <div className="p-6">
                   <h3 className="font-semibold text-lg">Kelas Anak-anak (10-15 tahun)</h3>
                   <p className="text-gray-600">Senin, Selasa, Kamis<br/>Ba’da Ashar - 18.00 WIB</p>
                   </div>
-              </div>
+              </div> */}
               <div className="bg-white shadow-lg rounded-lg text-center ">
                   <img src="/images/semangat-membaca-al-quran-7.jpeg" className="rounded-t-lg" alt="" />
                   <div className="p-6">
                   <h3 className="font-semibold text-lg">Kelas Dewasa (16+ tahun)</h3>
-                  <p className="text-gray-600">Tahsin: Ahad, Senin | Tahfizh: Rabu, Kamis<br/>Ba’da Maghrib - 21.00 WIB</p>
+                  <p className="text-gray-600">Ahad & Rabu<br/>Ba’da Maghrib - 21.00 WIB</p>
                   </div>
               </div>
           </div>
@@ -198,7 +201,7 @@ export default function TahfizhPage() {
               <div className="z-10 relative">
                 <div className="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center mx-auto">1</div>
                 <p className="mt-2 text-gray-600 font-semibold">Pendaftaran</p>
-                <p className="mt-0 text-gray-600">3-22 Feb 2025</p>
+                <p className="mt-0 text-gray-600">29-1 Juli 2025</p>
                 {/* <div className="step-connector md:block hidden"></div> */}
               </div>
             </div>
@@ -206,7 +209,7 @@ export default function TahfizhPage() {
               <div className="z-10 relative">
                 <div className="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center mx-auto">2</div>
                 <p className="mt-2 text-gray-600 font-semibold">Seleksi</p>
-                <p className="mt-0 text-gray-600">24 Feb 2025</p>
+                <p className="mt-0 text-gray-600">Juli 2025</p>
                 {/* <div className="step-connector md:block hidden"></div> */}
               </div>
             </div>
@@ -214,13 +217,13 @@ export default function TahfizhPage() {
               <div className="z-10 relative">
                 <div className="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center mx-auto">3</div>
                 <p className="mt-2 text-gray-600 font-semibold">Mulai Belajar</p>
-                <p className="mt-0 text-gray-600">14 Apr 2025</p>
+                <p className="mt-0 text-gray-600">Juli 2025</p>
               </div>
             </div>
           </div>
           <div className="mt-10 text-center">
             { !data.classType?.closed ? (
-              <Link to="/registrasi?program=tahfizh" className="bg-primary hover:bg-green-600 text-white px-6 py-3 rounded-lg text-xl font-bold"><i className="fa-solid fa-hand-point-right"></i> Daftar Sekarang</Link>
+              <Link to="/registrasi?program=tahsin" className="bg-primary hover:bg-green-600 text-white px-6 py-3 rounded-lg text-xl font-bold"><i className="fa-solid fa-hand-point-right"></i> Daftar Sekarang</Link>
             ) : (
               <button disabled className="bg-primary opacity-50 text-white px-6 py-2 rounded-lg text-xl font-bold">Pendaftaran Ditutup</button>
             )}
@@ -239,12 +242,12 @@ export default function TahfizhPage() {
                         <span className="text-sm">Reza Daulay: 0812-1000-2964</span>
                     </a>
                 </div>
-                <div className="flex items-center justify-center">
+                {/* <div className="flex items-center justify-center">
                     <a href="https://wa.me/6281375199058" target="_blank" className="flex items-center bg-green-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-600">
                         <i className="fab fa-whatsapp text-2xl mr-3"></i>
                         <span className="text-sm">Yanda Basu: 0813-7519-9058</span>
                     </a>
-                </div>
+                </div> */}
             </div>
         </div>
       </div>
@@ -254,7 +257,7 @@ export default function TahfizhPage() {
       <div className="max-w-5xl mx-auto px-6 md:px-0">
         <h2 className="text-2xl font-bold text-gray-700">Dukung Program Ini dengan Donasi!</h2>
           <p className="mt-2 text-gray-600">Setiap ayat yang mereka baca, setiap hafalan yang mereka simpan dalam hati, pahala mengalir untuk Anda!</p>
-          <p className="mt-4 text-gray-600">Program Kelas Tahsin & Tahfizh ini adalah ikhtiar untuk mencetak generasi yang cinta Al-Qur’an. Agar terus berjalan dan semakin banyak yang bisa belajar, kami mengajak Anda untuk turut berkontribusi dalam kebaikan ini.</p>
+          <p className="mt-4 text-gray-600">Program Kelas Tahsin ini adalah ikhtiar untuk mencetak generasi yang cinta Al-Qur’an. Agar terus berjalan dan semakin banyak yang bisa belajar, kami mengajak Anda untuk turut berkontribusi dalam kebaikan ini.</p>
           <ul className="mt-4 text-gray-600 list-none	">
               <li>✔️ Biaya operasional program belajar</li>
               <li>✔️ Pengadaan modul belajar</li>
