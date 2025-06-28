@@ -52,17 +52,17 @@ export default function Index() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
           {/* looping */}
           <Link
-            to="/tahfizh"
+            to="/tahsin"
             className="relative group overflow-hidden rounded-xl shadow-lg"
           >
             <img
               src="/images/semangat-membaca-al-quran-4.jpeg"
-              alt="Kelas Tahsin & Tahfizh"
+              alt="Kelas Tahsin"
               className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#003e1e] via-transparent to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white font-bold text-xl">
-              Kelas Tahsin & Tahfizh
+              Kelas Tahsin
             </div>
           </Link>
           {/* looping */}

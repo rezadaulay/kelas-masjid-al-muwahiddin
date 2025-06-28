@@ -76,10 +76,6 @@ export default function App() {
       <body className="bg-gray-100">
         <ProgressBar/>
         <Outlet />
-        <footer className="bg-primary text-white py-6 text-center">
-          {/* <p>BKM Masjid Al Muwahhidin | Jl. SMTK, Lingkungan VIII Kelurahan P.B. Selayang </p> */}
-          <p className="mt-0">© { (new Date()).getFullYear() } Masjid Al Muwahhidin. Hak Cipta Dilindungi.</p>
-        </footer>
         <ScrollRestoration />
         <script
           dangerouslySetInnerHTML={{
